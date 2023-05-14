@@ -1,0 +1,41 @@
+{
+  "name": "vanilla-ts-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "TypeScript playground.",
+  "scripts": {
+    "dev": "run-p watch serve",
+    "lint": "lint:*",
+    "fmt": "prettier -w src",
+    "watch": "run-p watch:*",
+    "watch:ts": "tsc -w",
+    "watch:sass": "sass src/sass/main.sass dist/css/main.css -w",
+    "watch:asset": "cpx \"src/index.html\" dist --watch",
+    "lint:eslint": "eslint src",
+    "serve": "browser-sync start --config bs-config.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ken7253/vanilla-ts-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ken7253/vanilla-ts-template/issues"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "type": "module",
+  "homepage": "https://github.com/ken7253/vanilla-ts-template#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "browser-sync": "^2.27.10",
+    "cpx": "^1.5.0",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.1",
+    "sass": "^1.56.2",
+    "typescript": "^4.9.4"
+  }
+}
