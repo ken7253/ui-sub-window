@@ -1,5 +1,5 @@
 {
-  "name": "vanilla-ts-template",
+  "name": "ui-sub-window",
   "version": "1.0.0",
   "license": "MIT",
   "description": "TypeScript playground.",
@@ -16,16 +16,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ken7253/vanilla-ts-template.git"
+    "url": "git+https://github.com/ken7253/ui-sub-window.git"
   },
   "bugs": {
-    "url": "https://github.com/ken7253/vanilla-ts-template/issues"
+    "url": "https://github.com/ken7253/ui-sub-window/issues"
   },
   "engines": {
     "node": "18.x"
   },
   "type": "module",
-  "homepage": "https://github.com/ken7253/vanilla-ts-template#readme",
+  "homepage": "https://github.com/ken7253/ui-sub-window#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
