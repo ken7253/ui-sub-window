@@ -1,1 +1,6 @@
-@use './subWindow/index.scss'
+@use './subWindow/index.scss';
+
+:root {
+  height: 150vh;
+  width: 100%;
+}
