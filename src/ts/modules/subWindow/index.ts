@@ -4,6 +4,14 @@ type Option = {
   stack: boolean;
 };
 
+/**
+ * @TODO 最後に操作した要素が全面に来るように
+ * @TODO ドラッグ可能な領域を限定して内部のテキストが選択できるように
+ * @TODO ALTを押しながらドラッグすることで近くのサブウインドウにスナップできるように
+ * @TODO 要素の開閉ボタンを追加
+ * @TODO 要素の削除ボタンを追加
+ * @TODO 要素のサイズを可変にできるオプションの追加
+ */
 export class SubWindow {
   static windowList: {
     root: HTMLElement;
