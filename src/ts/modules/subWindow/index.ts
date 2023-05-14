@@ -1,6 +1,7 @@
 type Option = {
   initX: number;
   initY: number;
+  stack: boolean;
 };
 
 export class SubWindow {
@@ -20,6 +21,7 @@ export class SubWindow {
     this.option = {
       initX: 50,
       initY: 100,
+      stack: true,
       ...option,
     };
     this.x = this.option.initX;
@@ -27,18 +29,27 @@ export class SubWindow {
     this.startX = 0;
     this.startY = 0;
 
+    SubWindow.windowList.push({ root: this.root, id: this.id });
     this.setup();
   }
 
   setup() {
-    const { root, id } = this;
+    const { root } = this;
     root.setAttribute('role', 'dialog');
     root.setAttribute('aria-modal', 'false');
     root.draggable = true;
     root.addEventListener('dragstart', (e) => this.moveStart(e));
     root.addEventListener('dragend', (e) => this.moveEnd(e));
+    root.style.zIndex = SubWindow.windowList
+      .findIndex((v) => v.id === this.id)
+      .toString();
 
-    SubWindow.windowList.push({ root, id });
+    if (this.option.stack) {
+      const stackIndex =
+        SubWindow.windowList.findIndex((v) => v.id === this.id) + 1;
+      this.x = this.option.initX * stackIndex;
+      this.y = this.option.initY * stackIndex;
+    }
   }
 
   moveStart(e: DragEvent) {
