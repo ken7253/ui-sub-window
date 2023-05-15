@@ -47,6 +47,7 @@ export class SubWindow {
     root.draggable = true;
     root.addEventListener('dragstart', (e) => this.moveStart(e));
     root.addEventListener('dragend', (e) => this.moveEnd(e));
+    root.addEventListener('click', () => this.toTopLayer());
     root.style.zIndex = SubWindow.windowList
       .findIndex((v) => v.id === this.id)
       .toString();
