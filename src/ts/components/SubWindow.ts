@@ -27,16 +27,20 @@ export default class SubWindow extends HTMLElement {
     }
   `;
   root: HTMLElement;
+  startX: number;
+  startY: number;
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.root = document.createElement('div');
+    this.startX = 0;
+    this.startY = 0;
     this.setup();
     this.render();
   }
 
   private moveStart(e: DragEvent) {
-    const { dataTransfer } = e;
+    const { dataTransfer, screenX, screenY } = e;
     if (dataTransfer === null) return;
     if (this.shadowRoot === null) return;
     console.info('moveStart', e);
@@ -44,10 +48,17 @@ export default class SubWindow extends HTMLElement {
     dataTransfer.setData('text/html', this.shadowRoot.innerHTML);
     dataTransfer.dropEffect = 'move';
     dataTransfer.effectAllowed = 'move';
+
+    this.startX = screenX;
+    this.startY = screenY;
   }
 
   private moveEnd(e: DragEvent) {
+    const { screenX, screenY } = e;
     console.info('moveEnd', e);
+
+    this.x += screenX - this.startX;
+    this.y += screenY - this.startY;
   }
 
   private setup() {
