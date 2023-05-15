@@ -98,10 +98,8 @@ export class SubWindow {
 
   private toTopLayer() {
     const index = SubWindow.windowList.findIndex((v) => v.id === this.id);
-    console.log(SubWindow.windowList);
     SubWindow.windowList.splice(index, 1);
     SubWindow.windowList.push({ root: this.root, id: this.id });
-    console.log(SubWindow.windowList);
     SubWindow.setIndex();
   }
 
