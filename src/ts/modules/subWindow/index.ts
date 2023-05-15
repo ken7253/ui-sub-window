@@ -5,7 +5,6 @@ type Option = {
 };
 
 /**
- * @TODO 最後に操作した要素が全面に来るように
  * @TODO ドラッグ可能な領域を限定して内部のテキストが選択できるように
  * @TODO ALTを押しながらドラッグすることで近くのサブウインドウにスナップできるように
  * @TODO 要素の開閉ボタンを追加
@@ -77,6 +76,8 @@ export class SubWindow {
     const moveY = screenY - this.startY;
     this.x += moveX;
     this.y += moveY;
+
+    this.toTopLayer();
   }
 
   private set x(px: number) {
@@ -93,5 +94,20 @@ export class SubWindow {
 
   get y(): number {
     return parseInt(this.root.style.top.replace('px', ''));
+  }
+
+  private toTopLayer() {
+    const index = SubWindow.windowList.findIndex((v) => v.id === this.id);
+    console.log(SubWindow.windowList);
+    SubWindow.windowList.splice(index, 1);
+    SubWindow.windowList.push({ root: this.root, id: this.id });
+    console.log(SubWindow.windowList);
+    SubWindow.setIndex();
+  }
+
+  private static setIndex() {
+    SubWindow.windowList.forEach((item, index) => {
+      item.root.style.zIndex = index.toString();
+    });
   }
 }
